@@ -1,0 +1,130 @@
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  // Using SQLite for development and testing
+  // For production, update provider and DATABASE_URL to match your database
+  // User requested: PostgreSQL
+  provider = "postgresql"
+  // For PostgreSQL, use: provider = "postgresql"
+  // For SQLite, use: provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model VolumeService {
+  id String @id @default(uuid())
+  serviceName String
+  serviceType String
+  usageCount Int
+  averageResponseTime Float
+  successRate Float
+  errorRate Float
+  metadata Json
+  recordedAt DateTime
+  isActive Boolean @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model CustomerSatisfaction {
+  id String @id @unique @default(uuid())
+  date DateTime
+  dailyScore Float
+  previousMonthAverage Float
+  currentMonthAverage Float
+  comparisonPercent Float
+  feedbackSummary String
+  metadata Json
+  isActive Boolean @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Kpi {
+  id String @id @unique @default(uuid())
+  name String
+  description String
+  category String
+  value Float
+  unit String
+  targetValue Float
+  growthRate Float
+  periodStart DateTime
+  periodEnd DateTime
+  isActive Boolean @default(true)
+  metadata Json
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model TargetReality {
+  id String @id @default(uuid())
+  periodStart DateTime
+  targetSales Float
+  actualSales Float
+  createdAt DateTime @default(now())
+}
+
+
+model Revenue {
+  id String @id @unique @default(uuid())
+  channel String
+  onlineSales Float
+  offlineSales Float
+  totalRevenue Float
+  currency String
+  periodStart DateTime
+  periodEnd DateTime
+  notes String
+  isForecast Boolean @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model VisitorInsight {
+  id String @id @unique @default(uuid())
+  month String
+  year Int
+  loyalVisitors Int
+  newVisitors Int
+  uniqueVisitors Int
+  totalVisitors Int
+  growthRate Float
+  isActive Boolean @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model TopProduct {
+  id String @id @unique @default(uuid())
+  name String
+  sku String @unique
+  category String
+  totalSales Int
+  unitsSold Int
+  revenue Float
+  averageRating Float
+  isActive Boolean @default(true)
+  periodStart DateTime
+  periodEnd DateTime
+  metadata Json
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model SalesMap {
+  id String @id @unique @default(uuid())
+  country String
+  countryCode String
+  totalSales Float
+  currency String
+  region String
+  salesBreakdown Json
+  recordedDate DateTime
+  isActive Boolean @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
