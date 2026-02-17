@@ -1,4 +1,4 @@
-const { exec } = require("child_process");
+import { exec } from "child_process";
 
 exec("npx prisma db push --force-reset", (error, stdout, stderr) => {
     if (error) {
