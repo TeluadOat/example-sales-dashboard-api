@@ -7,7 +7,7 @@ datasource db {
   // Using SQLite for development and testing
   // For production, update provider and DATABASE_URL to match your database
   // User requested: PostgreSQL
-  provider = "postgresql"
+  provider = "sqlite"
   // For PostgreSQL, use: provider = "postgresql"
   // For SQLite, use: provider = "sqlite"
   url      = env("DATABASE_URL")
