@@ -21,7 +21,11 @@ const app = express();
 //  || `http://localhost:${process.env.PORT || 3000}`;
 const appUrl = process.env.APP_URL
 
-app.use(cors());
+app.use(cors({
+  origin: appUrl,
+  credentials: true,
+}
+));
 app.use(
   express.json({
     verify: (req, _res, buf) => {
