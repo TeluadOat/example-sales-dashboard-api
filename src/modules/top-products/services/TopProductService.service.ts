@@ -9,6 +9,11 @@ export class TopProductService {
   }
 
   async listTopFive(): Promise<TopProduct[]> {
+    const totalUnitsResult = await prisma.topProduct.aggregate({
+      _sum: { unitsSold: true },
+    });
+    const totalUnits = totalUnitsResult._sum.unitsSold ?? 0;
+
     const products = await this.prisma.topProduct.findMany({
       orderBy: { totalSales: "desc" },
       take: 5,
@@ -16,11 +21,9 @@ export class TopProductService {
 
     if (products.length === 0) return [];
 
-    const maxUnits = Math.max(...products.map(p => p.unitsSold));
-
     return products.map((p, i) => ({
       ...p,
-      popularityPercent: maxUnits > 0 ? (p.unitsSold / maxUnits) * 100 : 0,
+      popularityPercent: totalUnits > 0 ? (p.unitsSold / totalUnits) * 100 : 0,
       color: `hsl(${(i / products.length) * 360}, 70%, 50%)`,
     }))
   }
