@@ -19,13 +19,14 @@ dotenv.config();
 const app = express();
 
 //  || `http://localhost:${process.env.PORT || 3000}`;
-const appUrl = process.env.APP_URL
 
-app.use(cors({
-  origin: appUrl,
-  credentials: true,
-}
+app.use(cors(
+  {
+    origin: process.env.APP_URL,
+    credentials: true,
+  }
 ));
+
 app.use(
   express.json({
     verify: (req, _res, buf) => {
