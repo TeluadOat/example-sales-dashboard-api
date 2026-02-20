@@ -115,16 +115,10 @@ model TopProduct {
 }
 
 model SalesMap {
-  id String @id @unique @default(uuid())
+  id String @id @default(uuid())
   country String
-  countryCode String
   totalSales Float
-  currency String
-  region String
-  salesBreakdown Json
-  recordedDate DateTime
-  isActive Boolean @default(true)
+  periodStart DateTime
+  periodEnd DateTime
   createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
 }
-
