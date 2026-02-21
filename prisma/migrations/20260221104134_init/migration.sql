@@ -123,13 +123,9 @@ CREATE TABLE "TopProduct" (
 CREATE TABLE "SalesMap" (
     "id" TEXT NOT NULL,
     "country" TEXT NOT NULL,
-    "countryCode" TEXT NOT NULL,
     "totalSales" DOUBLE PRECISION NOT NULL,
-    "currency" TEXT NOT NULL,
-    "region" TEXT NOT NULL,
-    "salesBreakdown" JSONB NOT NULL,
-    "recordedDate" TIMESTAMP(3) NOT NULL,
-    "isActive" BOOLEAN NOT NULL DEFAULT true,
+    "periodStart" TIMESTAMP(3) NOT NULL,
+    "periodEnd" TIMESTAMP(3) NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
