@@ -60,15 +60,6 @@ async function main() {
         ],
     });
 
-    await prisma.salesMap.deleteMany();
-
-    await prisma.salesMap.createMany({
-        data: [
-            { country: "Nigeria", countryCode: "NG", totalSales: 120000, currency: "USD", region: "Africa", salesBreakdown: {}, recordedDate: new Date() },
-            { country: "Ghana", countryCode: "GH", totalSales: 120000, currency: "USD", region: "Africa", salesBreakdown: {}, recordedDate: new Date() },
-        ],
-    });
-
 
     // seeding VisitorInsight data
     await prisma.visitorInsight.deleteMany();
@@ -355,6 +346,60 @@ async function main() {
         ],
     });
 
+    await prisma.salesMap.deleteMany();
+
+    await prisma.salesMap.createMany({
+        data: [
+            {
+                country: "United States",
+                totalSales: 450000,
+                periodStart: new Date("2026-01-01"),
+                periodEnd: new Date("2026-01-31"),
+            },
+            {
+                country: "Canada",
+                totalSales: 180000,
+                periodStart: new Date("2026-01-01"),
+                periodEnd: new Date("2026-01-31"),
+            },
+            {
+                country: "Brazil",
+                totalSales: 95000,
+                periodStart: new Date("2026-01-01"),
+                periodEnd: new Date("2026-01-31"),
+            },
+            {
+                country: "United Kingdom",
+                totalSales: 210000,
+                periodStart: new Date("2026-01-01"),
+                periodEnd: new Date("2026-01-31"),
+            },
+            {
+                country: "Germany",
+                totalSales: 170000,
+                periodStart: new Date("2026-01-01"),
+                periodEnd: new Date("2026-01-31"),
+            },
+            {
+                country: "Nigeria",
+                totalSales: 75000,
+                periodStart: new Date("2026-01-01"),
+                periodEnd: new Date("2026-01-31"),
+            },
+            {
+                country: "India",
+                totalSales: 260000,
+                periodStart: new Date("2026-01-01"),
+                periodEnd: new Date("2026-01-31"),
+            },
+            {
+                country: "Australia",
+                totalSales: 120000,
+                periodStart: new Date("2026-01-01"),
+                periodEnd: new Date("2026-01-31"),
+            },
+        ],
+    });
 
     console.log("✅ Seed done");
 }
