@@ -108,11 +108,12 @@ model TopProduct {
 }
 
 model SalesMap {
-  id          String   @id @unique @default(uuid())
-  country     String
-  totalSales  Float
-  periodStart DateTime
-  periodEnd   DateTime
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  id             String   @id @unique @default(uuid())
+  country        String
+  totalSales     Float
+  periodStart    DateTime
+  periodEnd      DateTime
+  isActive       Boolean  @default(true)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
 }
